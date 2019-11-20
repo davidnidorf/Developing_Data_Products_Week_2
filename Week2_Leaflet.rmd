@@ -1,0 +1,19 @@
+---
+title: "Data Products Week 2: Leaflet"
+author: "David Nidorf"
+date: "11/20/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document with an embedded leaflet visualization using the following code: 
+
+```{r}
+library(leaflet)
+leaflet() %>% addTiles()
+```
