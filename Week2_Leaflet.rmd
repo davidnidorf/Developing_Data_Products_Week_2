@@ -9,11 +9,129 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Basic Leaflet visualization
 
-This is an R Markdown document with an embedded leaflet visualization using the following code: 
-
-```{r}
+```{r warning=FALSE, echo=FALSE}
 library(leaflet)
-leaflet() %>% addTiles()
+
+leaflet() %>% addTiles() %>%
+  setView(lat = 0, lng = 0, zoom = 1) %>%
+  setMaxBounds(lat1 = -90, lat2 = 90, lng1 = -180, lng2 = 180) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = -23.3, lat2 = 23.3,
+    weight = 0, label = "Tropics",
+    fillColor = "Red", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = 0, label = "Tropics",
+    labelOptions = labelOptions(noHide = T,
+    direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = 23.5, lat2 = 23.6,
+    weight = 0, label = "Tropic of Cancer",
+    fillColor = "Orange", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = 23.5, label = "Tropic of Cancer",
+    labelOptions = labelOptions(noHide = T, direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = -23.5, lat2 = -23.6,
+    weight = 0, label = "Tropic of Capricorn",
+    fillColor = "Orange", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = -23.5, label = "Tropic of Capricorn",
+    labelOptions = labelOptions(noHide = T, direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = 66.6, lat2 = 90,
+    weight = 0, label = "Arctic Circle",
+    fillColor = "Blue", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = 75, label = "Arctic Circle",
+    labelOptions = labelOptions(noHide = T,
+    direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = -66.6, lat2 = -90,
+    weight = 0, label = "Antarctic Circle",
+    fillColor = "Blue", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = -75, label = "Antarctic Circle",
+    labelOptions = labelOptions(noHide = T,
+    direction = 'center', textOnly = T)
+  )
 ```
+
+This is an R Markdown document with an embedded leaflet visualization using the following code (admittedly verbose, but it shows the basics of overlaying information on a map):
+
+```{r warning=FALSE, results=FALSE}
+library(leaflet)
+
+leaflet() %>% addTiles() %>%
+  setView(lat = 0, lng = 0, zoom = 1) %>%
+  setMaxBounds(lat1 = -90, lat2 = 90, lng1 = -180, lng2 = 180) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = -23.3, lat2 = 23.3,
+    weight = 0, label = "Tropics",
+    fillColor = "Red", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = 0, label = "Tropics",
+    labelOptions = labelOptions(noHide = T,
+    direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = 23.5, lat2 = 23.6,
+    weight = 0, label = "Tropic of Cancer",
+    fillColor = "Orange", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = 23.5, label = "Tropic of Cancer",
+    labelOptions = labelOptions(noHide = T, direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = -23.5, lat2 = -23.6,
+    weight = 0, label = "Tropic of Capricorn",
+    fillColor = "Orange", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = -23.5, label = "Tropic of Capricorn",
+    labelOptions = labelOptions(noHide = T, direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = 66.6, lat2 = 90,
+    weight = 0, label = "Arctic Circle",
+    fillColor = "Blue", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = 75, label = "Arctic Circle",
+    labelOptions = labelOptions(noHide = T,
+    direction = 'center', textOnly = T)
+  ) %>%
+  addRectangles(
+    lng1 = -180, lng2 = 180,
+    lat1 = -66.6, lat2 = -90,
+    weight = 0, label = "Antarctic Circle",
+    fillColor = "Blue", fillOpacity = 0.2
+  ) %>%
+  addLabelOnlyMarkers(
+    lng = 0, lat = -75, label = "Antarctic Circle",
+    labelOptions = labelOptions(noHide = T,
+    direction = 'center', textOnly = T)
+  )
+```
+
